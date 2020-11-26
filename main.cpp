@@ -10,8 +10,11 @@ class Stack{
   bool isEmpty(){
     return top == -1;
   }
+  bool isFull(){
+    return sizeof(values) == top;
+  }
   void push(int value){
-    if(sizeof(values) == top){
+    if(isFull()){
       cout << "Stack Is Fill";
       return;
     }
@@ -20,13 +23,24 @@ class Stack{
   }
 
   int pop(){
+    if(isEmpty()){
+      cout << "Stack is empty";
+      return -99999999;
+    }
     return values[top--];
   }
 
-  void display(){
-    for (int i = 0; i <= top; i++){
-      cout << values[i] << "\n";
+  void clear(){
+    top = -1;
+  }
+  void peak(){
+    if(isEmpty()){
+      cout << "Stack is empty";
+      return;
     }
+
+   cout << "peak value is = "<< values[top] << "\n";
+
   }
 };
 
